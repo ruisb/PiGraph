@@ -6,7 +6,7 @@
 -- Erwig's FGL. It is an extension of the std library Data.Graph.Acyclic.
 -- Note that this representation does not aim to be efficient. 
 
-module Directed where
+module Directed2 where
 
 import Data.Nat as Nat
 open Nat using (ℕ; zero; suc; _<′_; _≤_ ; _≤?_ ; pred)
@@ -639,15 +639,15 @@ allfins : ∀ {n} → List (Fin n)
 allfins {0}     = []
 allfins {suc m} = zero ∷ List.map (raise 1) (allfins {m})
 
-
+{--
 _≅_ :  ∀{N E n} → Graph N E n → Graph N E n → Bool
 _≅_ {n = zero } ∅ ∅  = true
 _≅_ {n = suc m} g₁ g₂ = List.or (List.map (λ v -> aux g₁ (g₂ [ v ])) allfins)
   where
         eqctx :  ∀{N E n} → Context N E n → Context N E n → Bool
         eqctx c₁ c₂ = let p₁ = List.sort (List.map proj₂ (predecessors c₁))
-                          p₂ =        {!!}
+                          p₂ =        ?
         aux : ∀{N E n} → Graph N E (suc n) → Graph N E (suc n) -> Bool
         aux (c₁ & g₁') (c₂ & g₂') = (g₁' ≅ g₂') ∧ eqctx c₁ c₂
-       
+   --}    
 
